@@ -236,6 +236,10 @@ class CoolUtil
 		return pvp.PvPPlayState.instance != null;
 	}
 
+	@:noUsing public static inline function getMacroAbstractClass(className:String) {
+		return Type.resolveClass('${className}_HSC');
+	}
+
 	public static function getPlayState():Dynamic {
 		return pvp.PvPPlayState.instance != null ? pvp.PvPPlayState.instance : PlayState.instance;
 	}

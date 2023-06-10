@@ -1,12 +1,11 @@
-# NOTE: THIS ENGINE IS STILL BEING WORKED ON! Report any bugs in the issues page!
-
 ![Psych Engine Extra](https://user-images.githubusercontent.com/85134252/153526241-9f265b56-ffd1-4452-bb61-c7500471a910.png)
 
 # Friday Night Funkin' - Psych Engine Extra
 Modified version of Psych Engine adding more stuff, most notably higher key amounts, time signatures, and Hscript support.
 
 ## Credits:
-* Starmapo - Programmer and Artist
+* Moxie - Maintainer of this Fork
+* Starmapo - Creator, Programmer and Artist
 
 ## Special Thanks:
 * KadeDev & GitHub Contributors - Made Kade Engine (some code and ideas are from there)
@@ -16,7 +15,6 @@ Modified version of Psych Engine adding more stuff, most notably higher key amou
 ## Psych Engine Credits:
 * Shadow Mario - Programmer
 * RiverOaken - Artist
-* Yoshubs - Assistant Programmer
 
 ### Psych Engine Special Thanks:
 * bbpanzu - Ex-Programmer
@@ -56,19 +54,36 @@ _____________________________________
 
 ## Build Instructions:
 ### Installing the Required Programs
-First, you need to install the **latest** Haxe and HaxeFlixel. I'm too lazy to write and keep updated with that setup (which is pretty simple). 
+First, you need to install the **latest** Haxe (4.3.7) and HaxeFlixel (5.2.2). I'm too lazy to write and keep updated with that setup (which is pretty simple). 
 1. [Install Haxe](https://haxe.org/download/)
 2. [Install HaxeFlixel](https://haxeflixel.com/documentation/install-haxeflixel/) after downloading Haxe (make sure to do `haxelib run lime setup flixel` to install the necessary libraries, basically just follow the whole guide)
 
-You should make sure to keep Haxe & Flixel updated. If there is a compilation error, it might be due to having an outdated version.
+For this project, you'll need to do `haxelib newrepo` and then install the following libaries listed here
+```
+haxelib install lime 8.2.2
+haxelib install openfl 9.2.2
+haxelib --never install flixel 5.2.2
+haxelib install flixel-tools
+haxelib set flixel-ui 2.6.0 --always
+haxelib set flixel-addons 2.11.0 --always
+haxelib install hxCodec 2.5.1
+haxelib git linc_luajit https://github.com/superpowers04/linc_luajit
+haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
+haxelib git hscript https://github.com/HaxeFoundation/hscript
+haxelib git hscript-ex https://github.com/moxie-coder/hscript-ex
+haxelib set openfl 9.2.2 --always
+```
+Make *sure* you use OpenFL 9.2.2 and Lime 8.2.2 for this specifically. Which is what the local haxelib is for.
+
+<!-- You should make sure to keep Haxe & Flixel updated. If there is a compilation error, it might be due to having an outdated version. -->
 
 You'll also need to install a couple things that involve Gits. To do this, you need to do a few things first.
 1. Download [git-scm](https://git-scm.com/downloads). Works for Windows, Mac, and Linux, just select your build.
 2. Follow instructions to install the application properly.
 3. Run `haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc` to install Discord RPC.
-4. Run `haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit` to install LuaJIT. If you get an error about StatePointer when using Lua, run `haxelib remove linc_luajit` into Command Prompt/PowerShell, then re-install linc_luajit. (If you don't want your mod to be able to run .lua scripts, delete the "LUA_ALLOWED" line on Project.xml)
-5. Run `haxelib git hscript https://github.com/HaxeFoundation/hscript` to install hscript. After that, run `haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex` to install hscript-ex. (If you don't want your mod to be able to run .hscript scripts, delete the "HSCRIPT_ALLOWED" line on Project.xml)
-6. Run `haxelib install hxCodec` to install hxCodec for video support. (If you don't want your mod to have video support, delete the "VIDEOS_ALLOWED" line on Project.xml)
+4. Run `haxelib git linc_luajit https://github.com/superpowers04/linc_luajit` to install LuaJIT. If you get an error about StatePointer when using Lua, run `haxelib remove linc_luajit` into Command Prompt/PowerShell, then re-install linc_luajit. (If you don't want your mod to be able to run .lua scripts, delete the "LUA_ALLOWED" line on Project.xml)
+5. Run `haxelib git hscript https://github.com/HaxeFoundation/hscript` to install hscript. After that, run `haxelib git hscript-ex https://github.com/moxie-coder/hscript-ex/` to install hscript-ex. (If you don't want your mod to be able to run .hscript scripts, delete the "HSCRIPT_ALLOWED" line on Project.xml)
+6. Run `haxelib install hxCodec 2.5.1` to install hxCodec for video support. (If you don't want your mod to have video support, delete the "VIDEOS_ALLOWED" line on Project.xml)
 
 You should have everything ready for compiling the game! Follow the guide below to continue!
 
