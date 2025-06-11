@@ -24,3 +24,4 @@ export/*
 !.vscode/extensions.json
 .vs/*
 todo.txt
+/.haxelib
