@@ -24,7 +24,8 @@ Modified version of Psych Engine adding more stuff, most notably higher key amou
 * PolybiusProxy - Video Loader Library (hxCodec)
 * Keoiki - Note Splash Animations
 * Smokey - Sprite Atlas Support
-* Nebula the Zorua - LUA JIT Fork and some Lua reworks
+* Nebula the Zorua - Lua reworks
+* Superpowers04 - Lua JIT Fork
 _____________________________________
 
 # New Features
