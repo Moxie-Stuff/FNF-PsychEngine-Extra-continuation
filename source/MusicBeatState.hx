@@ -28,7 +28,7 @@ class MusicBeatState extends FlxUIState
 
 	override function create() {
 		Paths.clearStoredMemory();
-		if ((!Std.isOfType(this, PlayState)) && (!Std.isOfType(this, editors.ChartingState)))
+		if ((!Std.isOfType(this, PlayState)) && (!Std.isOfType(this, pvp.PvPPlayState)) && (!Std.isOfType(this, editors.ChartingState)))
 			Paths.clearUnusedMemory();
 
 		var skip:Bool = FlxTransitionableState.skipNextTransOut;
