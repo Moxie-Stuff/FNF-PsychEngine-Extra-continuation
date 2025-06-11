@@ -25,37 +25,35 @@ class GameplayChangersSubState extends MusicBeatSubState
 
 	function getOptions()
 	{
-		if (!MainMenuState.inPvP) {
-			var goption:GameplayOption = new GameplayOption('Scroll Type',
-				'How should the scroll speed be affected?',
-				'scrolltype',
-				'string',
-				'multiplicative',
-				["multiplicative", "constant"]);
-			optionsArray.push(goption);
+		var goption:GameplayOption = new GameplayOption('Scroll Type',
+			'How should the scroll speed be affected?',
+			'scrolltype',
+			'string',
+			'multiplicative',
+			["multiplicative", "constant"]);
+		optionsArray.push(goption);
 
-			var option:GameplayOption = new GameplayOption('Scroll Speed',
-				'',
-				'scrollspeed',
-				'float',
-				1);
-			option.scrollSpeed = 1.5;
-			option.minValue = 0.5;
-			option.changeValue = 0.1;
-			if (goption.getValue() != "constant")
-			{
-				option.description = "Multiplies the chart's scroll speed.";
-				option.displayFormat = '%vX';
-				option.maxValue = 3;
-			}
-			else
-			{
-				option.description = 'Forces a single scroll speed for every chart.';
-				option.displayFormat = "%v";
-				option.maxValue = 6;
-			}
-			optionsArray.push(option);
+		var option:GameplayOption = new GameplayOption('Scroll Speed',
+			'',
+			'scrollspeed',
+			'float',
+			1);
+		option.scrollSpeed = 1.5;
+		option.minValue = 0.5;
+		option.changeValue = 0.1;
+		if (goption.getValue() != "constant")
+		{
+			option.description = "Multiplies the chart's scroll speed.";
+			option.displayFormat = '%vX';
+			option.maxValue = 3;
 		}
+		else
+		{
+			option.description = 'Forces a single scroll speed for every chart.';
+			option.displayFormat = "%v";
+			option.maxValue = 6;
+		}
+		optionsArray.push(option);
 
 		#if cpp
 		var option:GameplayOption = new GameplayOption('Playback Rate',
@@ -72,66 +70,64 @@ class GameplayChangersSubState extends MusicBeatSubState
 		optionsArray.push(option);
 		#end
 
-		if (!MainMenuState.inPvP) {
-			var option:GameplayOption = new GameplayOption('Health Gain Multiplier',
-				"Multiplies the health gained from hitting notes.",
-				'healthgain',
-				'float',
-				1);
-			option.scrollSpeed = 2.5;
-			option.minValue = 0;
-			option.maxValue = 5;
-			option.changeValue = 0.1;
-			option.displayFormat = '%vX';
-			optionsArray.push(option);
+		var option:GameplayOption = new GameplayOption('Health Gain Multiplier',
+			"Multiplies the health gained from hitting notes.",
+			'healthgain',
+			'float',
+			1);
+		option.scrollSpeed = 2.5;
+		option.minValue = 0;
+		option.maxValue = 5;
+		option.changeValue = 0.1;
+		option.displayFormat = '%vX';
+		optionsArray.push(option);
 
-			var option:GameplayOption = new GameplayOption('Health Loss Multiplier',
-				"Multiplies the health lost from missing notes or hitting hurt notes.",
-				'healthloss',
-				'float',
-				1);
-			option.scrollSpeed = 2.5;
-			option.minValue = 0.5;
-			option.maxValue = 5;
-			option.changeValue = 0.1;
-			option.displayFormat = '%vX';
-			optionsArray.push(option);
+		var option:GameplayOption = new GameplayOption('Health Loss Multiplier',
+			"Multiplies the health lost from missing notes or hitting hurt notes.",
+			'healthloss',
+			'float',
+			1);
+		option.scrollSpeed = 2.5;
+		option.minValue = 0.5;
+		option.maxValue = 5;
+		option.changeValue = 0.1;
+		option.displayFormat = '%vX';
+		optionsArray.push(option);
 
-			var option:GameplayOption = new GameplayOption('Play as Opponent',
-				"Self-explanatory! Does not save your score.",
-				'opponentplay',
-				'bool',
-				false);
-			optionsArray.push(option);
+		var option:GameplayOption = new GameplayOption('Play as Opponent',
+			"Self-explanatory! Does not save your score.",
+			'opponentplay',
+			'bool',
+			false);
+		optionsArray.push(option);
 
-			var option:GameplayOption = new GameplayOption('Instakill on Miss',
-				"Instantly die if you miss a note or hit a hurt note.",
-				'instakill',
-				'bool',
-				false);
-			optionsArray.push(option);
+		var option:GameplayOption = new GameplayOption('Instakill on Miss',
+			"Instantly die if you miss a note or hit a hurt note.",
+			'instakill',
+			'bool',
+			false);
+		optionsArray.push(option);
 
-			var option:GameplayOption = new GameplayOption('Practice Mode',
-				"Prevents you from dying. Does not save your score.",
-				'practice',
-				'bool',
-				false);
-			optionsArray.push(option);
+		var option:GameplayOption = new GameplayOption('Practice Mode',
+			"Prevents you from dying. Does not save your score.",
+			'practice',
+			'bool',
+			false);
+		optionsArray.push(option);
 
-			var option:GameplayOption = new GameplayOption('Botplay',
-				"Let the game play by itself!",
-				'botplay',
-				'bool',
-				false);
-			optionsArray.push(option);
+		var option:GameplayOption = new GameplayOption('Botplay',
+			"Let the game play by itself!",
+			'botplay',
+			'bool',
+			false);
+		optionsArray.push(option);
 
-			var option:GameplayOption = new GameplayOption('Demo Mode',
-				"Hides most HUD elements so you can showcase the song. Botplay is activated.",
-				'demomode',
-				'bool',
-				false);
-			optionsArray.push(option);
-		}
+		var option:GameplayOption = new GameplayOption('Demo Mode',
+			"Hides most HUD elements so you can showcase the song. Botplay is activated.",
+			'demomode',
+			'bool',
+			false);
+		optionsArray.push(option);
 	}
 
 	public function getOptionByName(name:String)
@@ -224,23 +220,21 @@ class GameplayChangersSubState extends MusicBeatSubState
         var accept = controls.ACCEPT;
         var back = controls.BACK;
 		var reset = controls.RESET;
-		if (MainMenuState.inPvP) {
-			var gamepad = FlxG.gamepads.lastActive;
-			if (gamepad != null) {
-				if (gamepad.justPressed.LEFT_STICK_DIGITAL_UP || gamepad.justPressed.DPAD_UP) upP = true;
-				if (gamepad.justPressed.LEFT_STICK_DIGITAL_DOWN || gamepad.justPressed.DPAD_DOWN) downP = true;
-				if (gamepad.justPressed.LEFT_STICK_DIGITAL_LEFT || gamepad.justPressed.DPAD_LEFT) leftP = true;
-				if (gamepad.justPressed.LEFT_STICK_DIGITAL_RIGHT || gamepad.justPressed.DPAD_RIGHT) rightP = true;
-				if (gamepad.pressed.LEFT_STICK_DIGITAL_UP || gamepad.pressed.DPAD_UP) up = true;
-				if (gamepad.pressed.LEFT_STICK_DIGITAL_DOWN || gamepad.pressed.DPAD_DOWN) down = true;
-				if (gamepad.pressed.LEFT_STICK_DIGITAL_LEFT || gamepad.pressed.DPAD_LEFT) left = true;
-				if (gamepad.pressed.LEFT_STICK_DIGITAL_RIGHT || gamepad.pressed.DPAD_RIGHT) right = true;
-				if (gamepad.justReleased.LEFT_STICK_DIGITAL_LEFT || gamepad.justReleased.DPAD_LEFT) leftR = true;
-				if (gamepad.justReleased.LEFT_STICK_DIGITAL_RIGHT || gamepad.justReleased.DPAD_RIGHT) rightR = true;
-				if (gamepad.justPressed.A) accept = true;
-				if (gamepad.justPressed.B) back = true;
-				if (gamepad.justPressed.Y) reset = true;
-			}
+		var gamepad = FlxG.gamepads.lastActive;
+		if (gamepad != null) {
+			if (gamepad.justPressed.LEFT_STICK_DIGITAL_UP || gamepad.justPressed.DPAD_UP) upP = true;
+			if (gamepad.justPressed.LEFT_STICK_DIGITAL_DOWN || gamepad.justPressed.DPAD_DOWN) downP = true;
+			if (gamepad.justPressed.LEFT_STICK_DIGITAL_LEFT || gamepad.justPressed.DPAD_LEFT) leftP = true;
+			if (gamepad.justPressed.LEFT_STICK_DIGITAL_RIGHT || gamepad.justPressed.DPAD_RIGHT) rightP = true;
+			if (gamepad.pressed.LEFT_STICK_DIGITAL_UP || gamepad.pressed.DPAD_UP) up = true;
+			if (gamepad.pressed.LEFT_STICK_DIGITAL_DOWN || gamepad.pressed.DPAD_DOWN) down = true;
+			if (gamepad.pressed.LEFT_STICK_DIGITAL_LEFT || gamepad.pressed.DPAD_LEFT) left = true;
+			if (gamepad.pressed.LEFT_STICK_DIGITAL_RIGHT || gamepad.pressed.DPAD_RIGHT) right = true;
+			if (gamepad.justReleased.LEFT_STICK_DIGITAL_LEFT || gamepad.justReleased.DPAD_LEFT) leftR = true;
+			if (gamepad.justReleased.LEFT_STICK_DIGITAL_RIGHT || gamepad.justReleased.DPAD_RIGHT) rightR = true;
+			if (gamepad.justPressed.A) accept = true;
+			if (gamepad.justPressed.B) back = true;
+			if (gamepad.justPressed.Y) reset = true;
 		}
 
 		if (upP || FlxG.mouse.wheel > 0)

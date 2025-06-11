@@ -55,12 +55,6 @@ class OptionsState extends MusicBeatState
 		DiscordClient.changePresence("Options Menu", null);
 		#end
 
-		if (MainMenuState.inPvP) {
-			var gamepad = FlxG.gamepads.getByID(0);
-			if (gamepad != null)
-				controls.addDefaultGamepad(0);
-		}
-
 		FlxG.mouse.visible = true;
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
@@ -134,11 +128,7 @@ class OptionsState extends MusicBeatState
 			if (goToPlayState) {
 				StageData.loadDirectory(PlayState.SONG);
 				goToPlayState = false;
-				if (MainMenuState.inPvP) {
-					controls.removeGamepad(0);
-					LoadingState.loadAndSwitchState(new pvp.PvPPlayState(), true);
-				} else
-					LoadingState.loadAndSwitchState(new PlayState(), true);
+				LoadingState.loadAndSwitchState(new PlayState(), true);
 			} else {
 				MusicBeatState.switchState(new MainMenuState());
 			}

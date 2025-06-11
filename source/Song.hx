@@ -270,7 +270,7 @@ class Song
 		return swagShit;
 	}
 
-	public static function generateNotes(song:SwagSong, ?dadStrums:StrumLine, ?boyfriendStrums:StrumLine, ?pushedCallback:Array<Note>->Void, pvp:Bool = false) {
+	public static function generateNotes(song:SwagSong, ?dadStrums:StrumLine, ?boyfriendStrums:StrumLine, ?pushedCallback:Array<Note>->Void) {
 		var curSong = Paths.formatToSongPath(song.song); //In case you want to do something for a specific song
 		var notes:Array<Note> = [];
 
@@ -294,7 +294,7 @@ class Song
 				curDenominator = section.timeSignature[1];
 				curStepCrochet = (((60 / curBPM) * 4000) / curDenominator) / 4;
 			}
-			if (section.changeKeys && !pvp) {
+			if (section.changeKeys) {
 				if (curOpponentKeys != section.dadKeyAmount) {
 					curOpponentKeys = section.dadKeyAmount;
 					if (dadStrums != null) {
@@ -320,7 +320,7 @@ class Song
 			var rightKeys = (!section.mustHitSection ? curPlayerKeys : curOpponentKeys);
 			for (songNotes in section.sectionNotes)
 			{
-				if (CoolUtil.inPlayState(true) && PlayState.instance.inEditor && songNotes[0] < PlayState.instance.startPos)
+				if (CoolUtil.inPlayState() && PlayState.instance.inEditor && songNotes[0] < PlayState.instance.startPos)
 					continue;
 				var daNoteData:Int = (songNotes[1] >= leftKeys ? Std.int(songNotes[1] - leftKeys) : Std.int(songNotes[1])) % (leftKeys + rightKeys);
 
@@ -329,12 +329,8 @@ class Song
 					gottaHitNote = !gottaHitNote;
 				var isOpponent:Bool = !gottaHitNote;
 
-				if (pvp)
-					gottaHitNote = true;
-				else {
-					if (CoolUtil.inPlayState(true) && PlayState.instance.opponentChart)
-						gottaHitNote = !gottaHitNote;
-				}
+				if (CoolUtil.inPlayState() && PlayState.instance.opponentChart)
+					gottaHitNote = !gottaHitNote;
 
 				var oldNote:Note = (notes.length > 0 ? notes[notes.length - 1] : null);
 

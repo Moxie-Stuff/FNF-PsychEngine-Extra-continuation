@@ -1,7 +1,6 @@
 package;
 
 import flixel.util.FlxDestroyUtil;
-import pvp.PvPPlayState;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.transition.FlxTransitionableState;
