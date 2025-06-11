@@ -228,8 +228,12 @@ class CoolUtil
 		}
 	}
 
-	public static function inPlayState() {
-		return PlayState.instance != null;
+	public static function inPlayState(skipPvP:Bool = false) {
+		return PlayState.instance != null || (!skipPvP && pvp.PvPPlayState.instance != null);
+	}
+
+	public static function inPvPState() {
+		return pvp.PvPPlayState.instance != null;
 	}
 
 	@:noUsing public static inline function getMacroAbstractClass(className:String) {
@@ -237,7 +241,7 @@ class CoolUtil
 	}
 
 	public static function getPlayState():Dynamic {
-		return PlayState.instance;
+		return pvp.PvPPlayState.instance != null ? pvp.PvPPlayState.instance : PlayState.instance;
 	}
 
 	public static function alert(message:String, title:String = 'Error!') {

@@ -1,0 +1,25 @@
+{
+	"characters": [
+		["bf", "Boyfriend", [
+			["bf-car", "Boyfriend (Week 4)"],
+			["bf-christmas", "Boyfriend (Week 5)"],
+			["bf-holding-gf", "Boyfriend & Girlfriend"]
+		]],
+		["dad", "Daddy Dearest"],
+		["spooky", "Skid & Pump"],
+		["monster", "Monster", [
+			["monster-christmas", "Monster (Week 5)"]
+		]],
+		["pico", "Pico"],
+		["mom", "Mommy Mearest", [
+			["mom-car", "Mommy Mearest (Week 4)"]
+		]],
+		["parents-christmas", "Parents"],
+		["bf-pixel", "Boyfriend (Week 6)"],
+		["senpai", "Senpai", [
+			["senpai-angry", "Senpai (Angry)"]
+		]],
+		["spirit", "Spirit"],
+		["tankman", "Tankman"]
+	]
+}
